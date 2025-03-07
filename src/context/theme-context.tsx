@@ -16,23 +16,27 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
+  // Initialize theme on mount
   useEffect(() => {
-    setMounted(true);
-    // Check localStorage and system preference
+    // Check localStorage first
     const storedTheme = localStorage.getItem("theme") as Theme;
+    // Then check system preference
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
       .matches
       ? "dark"
       : "light";
-    const initialTheme = storedTheme || systemTheme;
 
+    // Set the initial theme (prefer localStorage over system preference)
+    const initialTheme = storedTheme || systemTheme;
     setTheme(initialTheme);
+    setMounted(true);
   }, []);
 
+  // Apply theme changes
   useEffect(() => {
     if (!mounted) return;
 
-    // Apply theme
+    // Apply theme by adding/removing the dark class to html element
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
@@ -43,8 +47,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("theme", theme);
   }, [theme, mounted]);
 
+  // Actual theme change handler - can be wrapped with any additional logic if needed
+  const handleThemeChange = (newTheme: Theme) => {
+    setTheme(newTheme);
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme: handleThemeChange }}>
       {children}
     </ThemeContext.Provider>
   );

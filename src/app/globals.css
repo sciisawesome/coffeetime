@@ -1,52 +1,82 @@
 @import "tailwindcss";
 
+/* Gruvbox Medium Theme Variables */
 :root {
-  /* Light theme variables */
-  --background: #ffffff;
-  --foreground: #171717;
-  --card-bg: #f7f7f7;
-  --primary: #0070f3;
-  --secondary: #6366f1; /* indigo */
-  --muted: #f3f4f6;
-  --muted-foreground: #6b7280;
-  --border: #e5e7eb;
+  /* Light theme (Gruvbox Light Medium) */
+  --background-rgb: 251, 241, 199;
+  --foreground-rgb: 60, 56, 54;
+  --card-bg-rgb: 235, 219, 178;
+  --primary-rgb: 204, 36, 29;
+  --secondary-rgb: 152, 151, 26;
+  --blue-rgb: 69, 133, 136;
+  --purple-rgb: 177, 98, 134;
+  --yellow-rgb: 215, 153, 33;
+  --border-rgb: 213, 196, 161;
+  --muted-rgb: 189, 174, 147;
+  --muted-foreground-rgb: 102, 92, 84;
 }
 
 .dark {
-  /* Dark theme variables */
-  --background: #121212;
-  --foreground: #e5e5e5;
-  --card-bg: #1e1e1e;
-  --primary: #3291ff;
-  --secondary: #818cf8; /* lighter indigo for dark mode */
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
-  --border: #2e2e2e;
+  /* Dark theme (Gruvbox Dark Medium) */
+  --background-rgb: 40, 40, 40;
+  --foreground-rgb: 235, 219, 178;
+  --card-bg-rgb: 60, 56, 54;
+  --primary-rgb: 251, 73, 52;
+  --secondary-rgb: 184, 187, 38;
+  --blue-rgb: 131, 165, 152;
+  --purple-rgb: 211, 134, 155;
+  --yellow-rgb: 250, 189, 47;
+  --border-rgb: 80, 73, 69;
+  --muted-rgb: 124, 111, 100;
+  --muted-foreground-rgb: 168, 153, 132;
 }
 
-/* Remove the prefers-color-scheme media query since we're using JavaScript for theme switching */
-
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-rgb));
+  font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
   transition:
     background-color 0.2s ease-in-out,
     color 0.2s ease-in-out;
 }
 
-/* Add some component-specific theme variables */
+/* Component specific theme variables */
 .card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border);
+  background-color: rgb(var(--card-bg-rgb));
+  border: 1px solid rgb(var(--border-rgb));
 }
 
 .button-primary {
-  background-color: var(--primary);
-  color: white;
+  background-color: rgb(var(--primary-rgb));
+  color: rgb(var(--background-rgb));
 }
 
 .button-secondary {
-  background-color: var(--secondary);
-  color: white;
+  background-color: rgb(var(--secondary-rgb));
+  color: rgb(var(--background-rgb));
+}
+
+/* Add these utility classes for Gruvbox colors */
+.bg-gruvbox-blue {
+  background-color: rgb(var(--blue-rgb));
+}
+
+.bg-gruvbox-purple {
+  background-color: rgb(var(--purple-rgb));
+}
+
+.bg-gruvbox-yellow {
+  background-color: rgb(var(--yellow-rgb));
+}
+
+.text-gruvbox-blue {
+  color: rgb(var(--blue-rgb));
+}
+
+.text-gruvbox-purple {
+  color: rgb(var(--purple-rgb));
+}
+
+.text-gruvbox-yellow {
+  color: rgb(var(--yellow-rgb));
 }
