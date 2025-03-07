@@ -85,6 +85,15 @@ export default function Header() {
               )}
             </div>
           )}
+          {/* Add this link near your other navigation items */}
+          {isLoggedIn && (
+            <Link
+              href="/second-brain"
+              className="text-[rgb(60,56,54)] dark:text-[rgb(235,219,178)] hover:text-[rgb(69,133,136)] dark:hover:text-[rgb(131,165,152)] mr-4"
+            >
+              Second Brain
+            </Link>
+          )}
         </div>
       </div>
     </header>

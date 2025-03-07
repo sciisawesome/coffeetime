@@ -3,6 +3,7 @@ import { AuthProvider } from "@/context/auth-context";
 import { ThemeProvider } from "@/context/theme-context";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
+import { NotesProvider } from "@/context/notes-context";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -52,9 +53,11 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <AuthProvider>
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
+            <NotesProvider>
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </NotesProvider>
           </AuthProvider>
         </ThemeProvider>
       </body>
