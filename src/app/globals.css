@@ -14,6 +14,12 @@
   --border-rgb: 213, 196, 161;
   --muted-rgb: 189, 174, 147;
   --muted-foreground-rgb: 102, 92, 84;
+
+  /* Header and Footer specific */
+  --header-bg: white;
+  --header-text: rgb(60, 56, 54);
+  --footer-bg: white;
+  --footer-text: rgb(60, 56, 54);
 }
 
 .dark {
@@ -29,6 +35,12 @@
   --border-rgb: 80, 73, 69;
   --muted-rgb: 124, 111, 100;
   --muted-foreground-rgb: 168, 153, 132;
+
+  /* Header and Footer specific */
+  --header-bg: rgb(60, 56, 54);
+  --header-text: rgb(235, 219, 178);
+  --footer-bg: rgb(60, 56, 54);
+  --footer-text: rgb(168, 153, 132);
 }
 
 body {
@@ -39,7 +51,11 @@ body {
     background-color 0.2s ease-in-out,
     color 0.2s ease-in-out;
 }
-
+header,
+footer {
+  background-color: var(--card-bg);
+  transition: background-color 0.2s ease-in-out;
+}
 /* Component specific theme variables */
 .card {
   background-color: rgb(var(--card-bg-rgb));
@@ -79,4 +95,30 @@ body {
 
 .text-gruvbox-yellow {
   color: rgb(var(--yellow-rgb));
+}
+
+/* Header and Footer specific classes */
+.bg-header {
+  background-color: var(--header-bg);
+}
+
+.text-header {
+  color: var(--header-text);
+}
+
+.bg-footer {
+  background-color: var(--footer-bg);
+}
+
+.text-footer {
+  color: var(--footer-text);
+}
+
+/* Gruvbox hover states for common interactions */
+.hover-blue:hover {
+  color: rgb(var(--blue-rgb));
+}
+
+.dark .hover-blue:hover {
+  color: rgb(var(--blue-rgb));
 }

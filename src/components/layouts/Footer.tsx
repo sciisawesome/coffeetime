@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="dark:bg-[rgb(60,56,54)] py-3 w-full overflow-hidden transition-colors duration-200">
+    <footer className="bg-[#ebdbb2] dark:bg-[rgb(60,56,54)] py-3 w-full overflow-hidden transition-colors duration-200">
       <div className="container mx-auto px-4 max-w-full md:max-w-screen-xl">
         {/* Social Media Links */}
         <div className="flex flex-wrap justify-center gap-6 mb-6">
@@ -13,7 +13,7 @@ export default function Footer() {
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-[rgb(69,133,136)] dark:hover:text-[rgb(131,165,152)] transition-colors p-2 text-[rgb(60,56,54)] dark:text-[rgb(168,153,132)]"
+            className="flex items-center gap-2 hover:text-[rgb(69,133,136)] dark:hover:text-[rgb(131,165,152)] transition-colors p-2 dark:text-[rgb(168,153,132)]"
             aria-label="Twitter"
           >
             <svg
@@ -36,7 +36,7 @@ export default function Footer() {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-[rgb(69,133,136)] dark:hover:text-[rgb(131,165,152)] transition-colors p-2 text-[rgb(60,56,54)] dark:text-[rgb(168,153,132)]"
+            className="flex items-center gap-2 hover:text-[rgb(69,133,136)] dark:hover:text-[rgb(131,165,152)] transition-colors p-2 dark:text-[rgb(168,153,132)]"
             aria-label="LinkedIn"
           >
             <svg
@@ -61,7 +61,7 @@ export default function Footer() {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-[rgb(69,133,136)] dark:hover:text-[rgb(131,165,152)] transition-colors p-2 text-[rgb(60,56,54)] dark:text-[rgb(168,153,132)]"
+            className="flex items-center gap-2 hover:text-[rgb(69,133,136)] dark:hover:text-[rgb(131,165,152)] transition-colors p-2 dark:text-[rgb(168,153,132)]"
             aria-label="GitHub"
           >
             <svg
@@ -84,7 +84,7 @@ export default function Footer() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-[rgb(69,133,136)] dark:hover:text-[rgb(131,165,152)] transition-colors p-2 text-[rgb(60,56,54)] dark:text-[rgb(168,153,132)]"
+            className="flex items-center gap-2 hover:text-[rgb(69,133,136)] dark:hover:text-[rgb(131,165,152)] transition-colors p-2  dark:text-[rgb(168,153,132)]"
             aria-label="Instagram"
           >
             <svg
@@ -106,7 +106,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="mt-4 pt-2 border-t border-[rgb(213,196,161)] dark:border-[rgb(80,73,69)] text-center text-sm text-[rgb(102,92,84)] dark:text-[rgb(168,153,132)]">
+        <div className="mt-4 pt-2 border-t border-[rgb(213,196,161)] dark:border-[rgb(80,73,69)] text-center text-sm dark:text-[rgb(168,153,132)]">
           <p>© {currentYear} Monospace. All rights reserved.</p>
         </div>
       </div>

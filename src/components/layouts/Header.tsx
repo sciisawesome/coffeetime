@@ -11,11 +11,9 @@ export default function Header() {
   const { user, isLoggedIn, logout } = useAuth();
 
   return (
-    <header className="dark:bg-[rgb(60,56,54)] shadow-sm py-3 w-full transition-colors duration-200">
+    <header className="bg-[#ebdbb2] dark:bg-[rgb(60,56,54)] shadow-sm py-3 w-full transition-colors duration-200">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <span className="ml-2 dark:text-[rgb(235,219,178)] text-lg">
-          Monospace
-        </span>
+        <span className="ml-2  dark:text-[rgb(235,219,178)] text-lg">MS</span>
 
         {/* Navigation items and theme toggle */}
         <div className="flex items-center gap-4">

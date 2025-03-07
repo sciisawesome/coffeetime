@@ -8,13 +8,14 @@ type Theme = "light" | "dark";
 interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
+  isMounted: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Initialize theme on mount
   useEffect(() => {
@@ -29,12 +30,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Set the initial theme (prefer localStorage over system preference)
     const initialTheme = storedTheme || systemTheme;
     setTheme(initialTheme);
-    setMounted(true);
+    setIsMounted(true);
   }, []);
 
   // Apply theme changes
   useEffect(() => {
-    if (!mounted) return;
+    if (!isMounted) return;
 
     // Apply theme by adding/removing the dark class to html element
     if (theme === "dark") {
@@ -45,15 +46,39 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     // Save to localStorage
     localStorage.setItem("theme", theme);
-  }, [theme, mounted]);
+  }, [theme, isMounted]);
 
-  // Actual theme change handler - can be wrapped with any additional logic if needed
+  // Listen for system theme changes
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Only change theme if the user hasn't explicitly set a theme
+      if (!localStorage.getItem("theme")) {
+        setTheme(e.matches ? "dark" : "light");
+      }
+    };
+
+    // Modern browsers
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    }
+
+    return undefined;
+  }, [isMounted]);
+
+  // Actual theme change handler
   const handleThemeChange = (newTheme: Theme) => {
     setTheme(newTheme);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme: handleThemeChange }}>
+    <ThemeContext.Provider
+      value={{ theme, setTheme: handleThemeChange, isMounted }}
+    >
       {children}
     </ThemeContext.Provider>
   );
