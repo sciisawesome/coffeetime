@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  /* Light theme variables */
+  --background: #ffffff;
+  --foreground: #171717;
+  --card-bg: #f7f7f7;
+  --primary: #0070f3;
+  --secondary: #6366f1; /* indigo */
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+}
+
+.dark {
+  /* Dark theme variables */
+  --background: #121212;
+  --foreground: #e5e5e5;
+  --card-bg: #1e1e1e;
+  --primary: #3291ff;
+  --secondary: #818cf8; /* lighter indigo for dark mode */
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --border: #2e2e2e;
+}
+
+/* Remove the prefers-color-scheme media query since we're using JavaScript for theme switching */
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+/* Add some component-specific theme variables */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+}
+
+.button-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.button-secondary {
+  background-color: var(--secondary);
+  color: white;
+}
